@@ -473,6 +473,7 @@ class EbsHelper(object):
                     good_to_go = good_to_go and str(env['VersionLabel']) == version_label
 
                 if env['Status'] == 'Ready' and env['Health'] == 'Red':
+                    out('BALLSACKS! %s : %s' % (env['Status'], env['Health']))
                     if from_self:
                         out('Deploy failed')
                         raise Exception('Ready and red')
