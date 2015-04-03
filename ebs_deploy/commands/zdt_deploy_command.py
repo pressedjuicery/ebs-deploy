@@ -75,12 +75,12 @@ def execute(helper, config, args):
                               tier_name=env_config.get('tier_name'),
                               tier_type=env_config.get('tier_type'),
                               tier_version=env_config.get('tier_version'))
-    helper.wait_for_environments(new_env_name, status='Ready', health='Green', include_deleted=False, wait_time_secs=9900)
+    helper.wait_for_environments(new_env_name, status='Ready', health='Green', include_deleted=False, wait_time_secs=1000)
 
     # swap C-Names
     out("Swapping environment cnames")
     helper.swap_environment_cnames(old_env_name, new_env_name)
-    helper.wait_for_environments([old_env_name, new_env_name], status='Ready', include_deleted=False, wait_time_secs=9900)
+    helper.wait_for_environments([old_env_name, new_env_name], status='Ready', include_deleted=False, wait_time_secs=1000)
 
     # delete the old environment
     if args.termination_delay:
